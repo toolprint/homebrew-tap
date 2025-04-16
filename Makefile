@@ -47,7 +47,7 @@ lint: style
 	@echo "Linting complete (note: full audit requires formula to be in core tap)"
 
 
-test: install
+test: clean install
 	@echo "Testing installation..."
 	@echo "Expected version: $(FORMULA_VERSION)"
 	@echo -n "Installed version: "
