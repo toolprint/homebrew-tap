@@ -5,6 +5,7 @@ LOCAL_REPO := $(shell pwd)
 FORMULA_NAME := onegrep-cli
 FORMULA_FILE := $(FORMULA_NAME).rb
 LOCAL_FORMULA_PATH := $(LOCAL_REPO)/$(FORMULA_FILE)
+REMOTE_TAP := onegrep/tap
 LOCAL_TAP := onegrep/tap-local
 FORMULA_VERSION := $(shell grep -m1 'version "' $(FORMULA_FILE) | sed 's/.*version "\(.*\)".*/\1/')
 
@@ -25,6 +26,8 @@ clean:
 	@echo "Cleaning up..."
 	-brew untap $(LOCAL_TAP)
 	-brew cleanup $(FORMULA_NAME)
+	-brew untap $(REMOTE_TAP)
+	-brew uninstall $(FORMULA_NAME)
 	@echo "Homebrew tap removed and caches cleared" 
 
 tap:
