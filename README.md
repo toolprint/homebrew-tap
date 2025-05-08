@@ -9,14 +9,11 @@ Official Homebrew tap for OneGrep tools.
 ## Installation
 
 ```bash
-# Add the OneGrep tap
-brew tap onegrep/tap
-
-# Install OneGrep CLI
-brew install onegrep/tap/onegrep-cli
+# Install OneGrep CLI from our tap
+brew install onegrep/homebrew-tap/onegrep-cli
 
 # Verify installation
-onegrep --version
+onegrep-cli -V
 ```
 
 ## Updating

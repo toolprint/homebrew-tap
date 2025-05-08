@@ -52,7 +52,7 @@ When updating the formula version or binaries:
    make install
    
    # Try the CLI
-   onegrep --help
+   onegrep-cli --help
    ```
 
 ## Understanding the Local Test Mode
@@ -79,16 +79,16 @@ The formula (`onegrep-cli.rb`) follows standard Homebrew conventions:
 
 - Class name matches the formula name in CamelCase (`OnegrepCli`)
 - Supports multiple architectures (ARM64, x86_64 for macOS, x86_64 for Linux)
-- Uses GitHub releases for hosting binary files
+- Uses NPM to install from the registry
 - Includes SHA256 checksums for verification
 
 ## Release Process
 
 1. **Update the formula:**
-   - Update the version in `onegrep-cli.rb`
+   - Update the version in `Formula/onegrep-cli.rb`
    - Update SHA256 checksums for each architecture:
      ```bash
-     shasum -a 256 <binary-file>
+     curl -sL https://registry.npmjs.org/@onegrep/cli/-/cli-VERSION.tgz | shasum -a 256
      ```
 
 2. **Test and verify:**
@@ -109,7 +109,7 @@ The formula (`onegrep-cli.rb`) follows standard Homebrew conventions:
 ### Common Issues
 
 - **Formula syntax errors**: Run `make lint` to detect basic syntax issues
-- **Installation problems**: Use `brew install --verbose --formula ./onegrep-cli.rb` for detailed output
+- **Installation problems**: Use `brew install --verbose --formula ./Formula/onegrep-cli.rb` for detailed output
 - **SHA mismatch**: Verify checksums match the distributed binaries
 - **Version mismatch**: Ensure the binary version output matches formula version
 
@@ -117,11 +117,11 @@ The formula (`onegrep-cli.rb`) follows standard Homebrew conventions:
 
 ```bash
 # See detailed install information
-brew install --debug --verbose --formula ./onegrep-cli.rb
+brew install --debug --verbose --formula ./Formula/onegrep-cli.rb
 
 # Clean Homebrew's cache
 brew cleanup
 
 # Get formula info
-brew info ./onegrep-cli.rb
+brew info ./Formula/onegrep-cli.rb
 ``` 
