@@ -16,7 +16,9 @@ class OnegrepCli < Formula
 
   livecheck do
     url "https://registry.npmjs.org/#{package_name}/latest"
-    regex(/["']version["']:\\\\s*?["']([^"']+)["']/i)
+    strategy :json do |json|
+      json["version"]
+    end
   end
 
   depends_on "node"
