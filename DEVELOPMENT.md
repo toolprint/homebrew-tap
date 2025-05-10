@@ -70,6 +70,8 @@ make lint        - Run style checks
 make clean       - Remove local tap and clear Homebrew caches
 make tap         - Tap local repository for testing
 make install     - Clean, tap and install formula
+make version     - Show the current version of the package in the formula
+make update      - Update the version of the package in the formula
 make test        - Complete test: clean, install and verify version
 ```
 

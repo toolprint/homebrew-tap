@@ -1,5 +1,8 @@
 require "language/node"
 
+VERSION = "0.0.24"
+SHA = "6ab48b4aeffa81b92198b4a9b01152542bf082a28cef84f41770d2696968147f"
+
 class OnegrepCli < Formula
   repo_name = "onegrep/homebrew-tap"
   formula_name = "onegrep-cli"
@@ -9,9 +12,9 @@ class OnegrepCli < Formula
   license "EULA"
 
   package_name = "@onegrep/cli"
-  version "0.0.21"
+  version VERSION
   url "https://registry.npmjs.org/#{package_name}/-/cli-#{version}.tgz"
-  sha256 "9866f13f343e3edba70ef818247cf5084de01a1a3bed113b4bf73b300cf35928"
+  sha256 SHA
   binary_name = "onegrep-cli"
 
   livecheck do

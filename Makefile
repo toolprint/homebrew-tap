@@ -7,7 +7,7 @@ FORMULA_FILE := ./Formula/$(FORMULA_NAME).rb
 LOCAL_FORMULA_PATH := $(LOCAL_REPO)/$(FORMULA_FILE)
 REMOTE_TAP := onegrep/tap
 LOCAL_TAP := onegrep/tap-local
-FORMULA_VERSION := $(shell grep -m1 'version "' $(FORMULA_FILE) | sed 's/.*version "\(.*\)".*/\1/')
+FORMULA_VERSION := $(shell grep -m1 'VERSION = "' $(FORMULA_FILE) | sed 's/.*VERSION = "\(.*\)".*/\1/')
 BINARY_NAME := onegrep-cli
 
 help:
@@ -27,8 +27,8 @@ help:
 version:
 	@echo "Formula version: $(FORMULA_VERSION)"
 
-sha:
-	curl -sL https://registry.npmjs.org/@onegrep/cli/-/cli-$(FORMULA_VERSION).tgz | shasum -a 256
+update:
+	./update-version.sh
 
 info:
 	brew info --formula $(FORMULA_FILE)
