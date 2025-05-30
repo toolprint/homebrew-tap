@@ -3,11 +3,11 @@ require "language/node"
 VERSION = "0.0.29"
 SHA = "640a75b4a170891ddd62309e334f63b8d856709d0a9d0d65f283517ffea6bb0c"
 
-class OnegrepCli < Formula
-  repo_name = "onegrep/homebrew-tap"
-  formula_name = "onegrep-cli"
+class ToolprintCli < Formula
+  repo_name = "toolprint/homebrew-tap"
+  formula_name = "tp-cli"
   
-  desc "OneGrep CLI: Discover, search, and manage tools for your agents."
+  desc "Toolprint CLI: Discover, search, and manage tools for your agents."
   homepage "https://www.npmjs.com/package/@onegrep/cli"
   license "EULA"
 
@@ -33,7 +33,7 @@ class OnegrepCli < Formula
 
   def caveats
     <<~EOS
-      onegrep-cli requires a Node installation to function. You can install one with:
+      tp-cli requires a Node installation to function. You can install one with:
         brew install node
     EOS
   end
