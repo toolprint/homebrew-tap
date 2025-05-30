@@ -17,7 +17,7 @@ class TpCli < Formula
   version VERSION
   url "https://registry.npmjs.org/#{package_name}/-/cli-#{version}.tgz"
   sha256 SHA
-  binary_name = "onegrep-cli"
+  binary_name = "cli"
 
   livecheck do
     url "https://registry.npmjs.org/#{package_name}/latest"
@@ -30,8 +30,9 @@ class TpCli < Formula
 
   def install
     system "npm", "install", "--production", "--no-audit", "--no-fund", "--no-package-lock", *Language::Node.std_npm_install_args(libexec), "tsx@^4.19.3"
+
+    # Do some nice symlinking to change things to toolprint
     bin.install_symlink Dir["#{libexec}/bin/*"]
-    # Rename the binary from onegrep-cli to tp-cli
     mv "#{bin}/cli", "#{bin}/#{LONG_BIN}"
     # Create symlink from short name to long name
     bin.install_symlink "#{LONG_BIN}" => "#{SHORT_BIN}"
