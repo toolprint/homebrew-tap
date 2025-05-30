@@ -36,6 +36,18 @@ brew update
 brew upgrade tp-cli
 ```
 
+## Reporting Issues
+
+If you encounter any problems with the formula or installation:
+
+1. First, try running `brew doctor` to check for common issues
+2. Make sure you're on the latest version with `brew update`
+3. If the problem persists, [open a new issue](../../issues/new/choose) with:
+   - Your Homebrew version (`brew --version`)
+   - Your macOS version
+   - The error message or unexpected behavior
+   - Any relevant logs from `brew install --verbose toolprint/tap/tp-cli`
+
 ## License
 
 This repository is licensed under the MIT License. See [LICENSE](LICENSE) for details.
