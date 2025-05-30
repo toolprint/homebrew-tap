@@ -1,19 +1,30 @@
-# OneGrep Homebrew Tap
+# Toolprint Homebrew Tap
 
-Official Homebrew tap for OneGrep tools.
+Official Homebrew tap for Toolprint tools.
 
 ## Available Formulae
 
-- `tp-cli`: Command-line tool for toolprint.ai. Use this to search for tool recs, author new toolprints, and setup new MCPs.
+- `tp-cli`: The official Toolprint CLI. Use this to discover, search, and manage tools for your agents.
 
 ## Installation
 
 ```bash
-# Install OneGrep CLI from our tap
-brew install toolprint/homebrew-tap/tp-cli
+# Install Toolprint CLI
+brew install toolprint/tap/tp-cli
+```
 
-# Verify installation
-cli -V
+After installation, you can use either of these commands:
+- `toolprint` (full name)
+- `tp-cli` (short alias)
+
+## Quick Start
+
+```bash
+# View all available commands
+toolprint help
+
+# Get the current version
+toolprint --version
 ```
 
 ## Updating
