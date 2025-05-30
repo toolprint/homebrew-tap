@@ -1,7 +1,7 @@
 require "language/node"
 
-VERSION = "0.0.29"
-SHA = "640a75b4a170891ddd62309e334f63b8d856709d0a9d0d65f283517ffea6bb0c"
+VERSION = "0.0.30"
+SHA = "827d6932f543b075f8ad191e657b3b1c1ae2f0c6bc34d1e2efa7364ad4fe96b4"
 
 class OnegrepCli < Formula
   repo_name = "onegrep/homebrew-tap"

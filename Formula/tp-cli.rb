@@ -1,9 +1,11 @@
 require "language/node"
 
-VERSION = "0.0.29"
-SHA = "640a75b4a170891ddd62309e334f63b8d856709d0a9d0d65f283517ffea6bb0c"
+VERSION = "0.0.30"
+SHA = "827d6932f543b075f8ad191e657b3b1c1ae2f0c6bc34d1e2efa7364ad4fe96b4"
+SHORT_BIN = "tp-cli"
+LONG_BIN = "toolprint"
 
-class ToolprintCli < Formula
+class TpCli < Formula
   repo_name = "toolprint/homebrew-tap"
   formula_name = "tp-cli"
   
@@ -29,12 +31,36 @@ class ToolprintCli < Formula
   def install
     system "npm", "install", "--production", "--no-audit", "--no-fund", "--no-package-lock", *Language::Node.std_npm_install_args(libexec), "tsx@^4.19.3"
     bin.install_symlink Dir["#{libexec}/bin/*"]
+    # Rename the binary from onegrep-cli to tp-cli
+    mv "#{bin}/cli", "#{bin}/#{LONG_BIN}"
+    # Create symlink from short name to long name
+    bin.install_symlink "#{LONG_BIN}" => "#{SHORT_BIN}"
+  end
+
+  def pour_bottle_check_unsatisfied
+    reason = []
+    reason << "Node is not installed. Please install Node.js using Homebrew: brew install node" unless which("node")
+    reason
   end
 
   def caveats
     <<~EOS
-      tp-cli requires a Node installation to function. You can install one with:
-        brew install node
+
+
+      ╭──────────────────────────────╮
+      │    Welcome to Toolprint!     │
+      ╰──────────────────────────────╯
+
+      🎉 Successfully installed! You can use either command to get started:
+        • #{LONG_BIN}  (full name)
+        • #{SHORT_BIN} (short alias)
+
+      🚀 Quick start:
+        #{LONG_BIN} help
+
+      📚 Learn more at https://www.npmjs.com/package/@onegrep/cli
+
+
     EOS
   end
 

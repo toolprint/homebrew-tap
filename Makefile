@@ -52,7 +52,10 @@ update:
 info:
 	brew info --formula $(FORMULA_FILE)
 
-clean:
+unlink:
+	-brew unlink $(FORMULA_NAME)
+
+clean: unlink
 	@echo "Cleaning up $(FORMULA_NAME)..."
 	-brew uninstall $(FORMULA_NAME)
 	-brew untap $(LOCAL_TAP)
@@ -68,7 +71,7 @@ tap:
 tap-info:
 	brew tap-info $(LOCAL_TAP)
 
-install: clean tap
+install: clean unlink tap
 	@echo "Installing from local tap..."
 	brew install --formula $(LOCAL_FORMULA_PATH)
 
