@@ -2,7 +2,7 @@
 
 # Configuration
 PACKAGE_NAME="@onegrep/cli"
-FORMULA_PATH="Formula/onegrep-cli.rb"
+FORMULA_DIR="Formula"
 TEMP_DIR="/tmp"
 
 # Get latest version from npm
@@ -16,12 +16,15 @@ curl -s "$TARBALL_URL" -o "$TARBALL_PATH"
 # Calculate SHA256
 NEW_SHA=$(shasum -a 256 "$TARBALL_PATH" | cut -d' ' -f1)
 
-# Update the formula file
-sed -i '' "s/VERSION = \"[0-9.]*\"/VERSION = \"$LATEST_VERSION\"/" "$FORMULA_PATH"
-sed -i '' "s/SHA = \"[a-f0-9]*\"/SHA = \"$NEW_SHA\"/" "$FORMULA_PATH"
+# Update all CLI formula files
+for formula_file in "$FORMULA_DIR"/*-cli.rb; do
+    echo "Updating $formula_file..."
+    sed -i '' "s/VERSION = \"[0-9.]*\"/VERSION = \"$LATEST_VERSION\"/" "$formula_file"
+    sed -i '' "s/SHA = \"[a-f0-9]*\"/SHA = \"$NEW_SHA\"/" "$formula_file"
+    echo "Updated $formula_file to version $LATEST_VERSION"
+done
 
 # Cleanup
 rm "$TARBALL_PATH"
 
-echo "Updated $FORMULA_PATH to version $LATEST_VERSION"
 echo "New SHA256: $NEW_SHA"

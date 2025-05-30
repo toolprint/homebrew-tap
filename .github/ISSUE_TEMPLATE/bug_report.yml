@@ -1,0 +1,58 @@
+name: Bug Report
+description: File a bug report for the Toolprint Homebrew formula
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+        
+  - type: dropdown
+    id: bug_type
+    attributes:
+      label: Bug Type
+      description: What type of issue are you encountering?
+      options:
+        - Installation fails
+        - Formula not found
+        - Wrong version installed
+        - Upgrade fails
+        - Binary not found after installation
+        - Symlinks not working
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: brew_version
+    attributes:
+      label: Homebrew Version
+      description: Output of `brew --version`
+      placeholder: "Homebrew 4.2.3"
+    validations:
+      required: true
+
+  - type: input
+    id: os_version
+    attributes:
+      label: Operating System
+      description: Your OS and version
+      placeholder: "macOS 14.3.1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: Also tell us what you expected to happen
+      placeholder: "Describe the issue you encountered..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell 
