@@ -2,7 +2,8 @@
 
 [![Website](https://img.shields.io/badge/toolprint.ai-black?style=flat&logo=world&logoColor=white)](https://www.toolprint.ai)
 [![NPM version](https://img.shields.io/npm/v/@onegrep/cli.svg)](https://www.npmjs.com/package/@onegrep/cli)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/toolprint/homebrew-tap/blob/main/LICENSE)
+[![Tap License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/toolprint/homebrew-tap/blob/main/LICENSE)
+[![CLI License](https://img.shields.io/badge/CLI%20License-EULA-lightgrey.svg)](https://www.npmjs.com/package/@onegrep/cli)
 
 > A universal toolkit that empowers AI agents to discover and execute the right tools for any task.
 
@@ -75,6 +76,12 @@ If you encounter a bug or have an idea for a new feature, we'd love to hear from
 *   **✨ Feature Request:** Have an idea to improve the formula or installation process? [Suggest a new feature](https://github.com/toolprint/homebrew-tap/issues/new?template=feature_request.yml).
 
 Before creating a new issue, please check to see if a similar one has already been opened.
+
+## License
+
+The source code for this Homebrew tap is available under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+The Toolprint CLI binary distributed by this formula is licensed under a separate EULA.
 
 ---
 
