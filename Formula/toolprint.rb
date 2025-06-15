@@ -1,11 +1,11 @@
 require "language/node"
 
-VERSION = "0.0.32"
-SHA = "b1784995da5631759db024bb57fa56c55cfce6414702fac71befcb3a3baf5f1f"
-SHORT_BIN = "tp-cli"
+VERSION = "0.0.37"
+SHA = "fcbc67b9faba799ccbb8e02db4b1338e184d977f033654cc3ec94632e71662a9"
+# SHORT_BIN = "tp-cli"
 LONG_BIN = "toolprint"
 
-class TpCli < Formula
+class Toolprint < Formula
   repo_name = "toolprint/homebrew-tap"
   formula_name = "tp-cli"
   
@@ -35,7 +35,7 @@ class TpCli < Formula
     bin.install_symlink Dir["#{libexec}/bin/*"]
     mv "#{bin}/cli", "#{bin}/#{LONG_BIN}"
     # Create symlink from short name to long name
-    bin.install_symlink "#{LONG_BIN}" => "#{SHORT_BIN}"
+    # bin.install_symlink "#{LONG_BIN}" => "#{SHORT_BIN}"
   end
 
   def pour_bottle_check_unsatisfied
@@ -52,9 +52,8 @@ class TpCli < Formula
       │    Welcome to Toolprint!     │
       ╰──────────────────────────────╯
 
-      🎉 Successfully installed! You can use either command to get started:
-        • #{LONG_BIN}  (full name)
-        • #{SHORT_BIN} (short alias)
+      🎉 Successfully installed! You can use this command to get started:
+        • #{LONG_BIN}
 
       🚀 Quick start:
         #{LONG_BIN} help

@@ -1,4 +1,4 @@
-# OneGrep Homebrew Tap Development
+# ToolPrint Homebrew Tap Development
 
 This document contains instructions for developers who maintain this Homebrew tap.
 
@@ -8,11 +8,13 @@ The repository uses a Makefile to simplify formula maintenance and testing with 
 
 ## Quick Start for Testing Updates
 
-When updating the formula version or binaries:
+When updating the formula to the latest version:
 
-1. **Update the formula file:**
-   - Change the version number
-   - Update SHA256 checksums for each architecture
+1. **Run the update script:**
+   ```bash
+   make update
+   ```
+   This will automatically fetch the latest version and update the formula file.
 
 2. **Test and verify with a single command:**
    ```bash
@@ -25,7 +27,7 @@ When updating the formula version or binaries:
    - Install the formula
    - Verify the installed version matches the formula
 
-3. **Commit and push changes once tests pass**
+3. **Commit and push changes once tests pass.**
 
 ## Complete Testing Workflow
 
@@ -52,12 +54,12 @@ When updating the formula version or binaries:
    make install
    
    # Try the CLI
-   onegrep-cli --help
+   toolprint --help
    ```
 
 ## Understanding the Local Test Mode
 
-- Testing uses an isolated tap called `onegrep/tap-local`
+- Testing uses an isolated tap called `toolprint/tap-local`
 - The tap is recreated fresh for each test (cleaned first)
 - All tests use your local formula file
 - Formula version is automatically extracted and verified
@@ -77,33 +79,31 @@ make test        - Complete test: clean, install and verify version
 
 ## Formula Structure
 
-The formula (`onegrep-cli.rb`) follows standard Homebrew conventions:
+The formula (`toolprint.rb`) follows standard Homebrew conventions:
 
-- Class name matches the formula name in CamelCase (`OnegrepCli`)
+- Class name matches the formula name in CamelCase (`Toolprint`)
 - Supports multiple architectures (ARM64, x86_64 for macOS, x86_64 for Linux)
 - Uses NPM to install from the registry
 - Includes SHA256 checksums for verification
 
 ## Release Process
 
-1. **Update the formula:**
-   - Update the version in `Formula/onegrep-cli.rb`
-   - Update SHA256 checksums for each architecture:
-     ```bash
-     curl -sL https://registry.npmjs.org/@onegrep/cli/-/cli-VERSION.tgz | shasum -a 256
-     ```
+1. **Update the formula to the latest version:**
+   ```bash
+   make update
+   ```
 
-2. **Test and verify:**
+2. **Test and verify the new version:**
    ```bash
    make test
    ```
 
-3. **Commit and push changes**
+3. **Commit and push changes to release.**
 
 4. **Users can update with:**
    ```bash
    brew update
-   brew upgrade onegrep-cli
+   brew upgrade toolprint
    ```
 
 ## Troubleshooting
@@ -111,7 +111,7 @@ The formula (`onegrep-cli.rb`) follows standard Homebrew conventions:
 ### Common Issues
 
 - **Formula syntax errors**: Run `make lint` to detect basic syntax issues
-- **Installation problems**: Use `brew install --verbose --formula ./Formula/onegrep-cli.rb` for detailed output
+- **Installation problems**: Use `brew install --verbose --formula ./Formula/toolprint.rb` for detailed output
 - **SHA mismatch**: Verify checksums match the distributed binaries
 - **Version mismatch**: Ensure the binary version output matches formula version
 
@@ -119,11 +119,11 @@ The formula (`onegrep-cli.rb`) follows standard Homebrew conventions:
 
 ```bash
 # See detailed install information
-brew install --debug --verbose --formula ./Formula/onegrep-cli.rb
+brew install --debug --verbose --formula ./Formula/toolprint.rb
 
 # Clean Homebrew's cache
 brew cleanup
 
 # Get formula info
-brew info ./Formula/onegrep-cli.rb
+brew info ./Formula/toolprint.rb
 ``` 
