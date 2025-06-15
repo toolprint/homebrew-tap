@@ -54,7 +54,7 @@ When updating the formula to the latest version:
    make install
    
    # Try the CLI
-   tp-cli --help
+   toolprint --help
    ```
 
 ## Understanding the Local Test Mode
@@ -79,9 +79,9 @@ make test        - Complete test: clean, install and verify version
 
 ## Formula Structure
 
-The formula (`tp-cli.rb`) follows standard Homebrew conventions:
+The formula (`toolprint.rb`) follows standard Homebrew conventions:
 
-- Class name matches the formula name in CamelCase (`TpCli`)
+- Class name matches the formula name in CamelCase (`Toolprint`)
 - Supports multiple architectures (ARM64, x86_64 for macOS, x86_64 for Linux)
 - Uses NPM to install from the registry
 - Includes SHA256 checksums for verification
@@ -103,7 +103,7 @@ The formula (`tp-cli.rb`) follows standard Homebrew conventions:
 4. **Users can update with:**
    ```bash
    brew update
-   brew upgrade tp-cli
+   brew upgrade toolprint
    ```
 
 ## Troubleshooting
@@ -111,7 +111,7 @@ The formula (`tp-cli.rb`) follows standard Homebrew conventions:
 ### Common Issues
 
 - **Formula syntax errors**: Run `make lint` to detect basic syntax issues
-- **Installation problems**: Use `brew install --verbose --formula ./Formula/tp-cli.rb` for detailed output
+- **Installation problems**: Use `brew install --verbose --formula ./Formula/toolprint.rb` for detailed output
 - **SHA mismatch**: Verify checksums match the distributed binaries
 - **Version mismatch**: Ensure the binary version output matches formula version
 
@@ -119,11 +119,11 @@ The formula (`tp-cli.rb`) follows standard Homebrew conventions:
 
 ```bash
 # See detailed install information
-brew install --debug --verbose --formula ./Formula/tp-cli.rb
+brew install --debug --verbose --formula ./Formula/toolprint.rb
 
 # Clean Homebrew's cache
 brew cleanup
 
 # Get formula info
-brew info ./Formula/tp-cli.rb
+brew info ./Formula/toolprint.rb
 ``` 

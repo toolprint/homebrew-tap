@@ -2,11 +2,11 @@
 
 # Default formula (customize as needed)
 LOCAL_REPO := $(shell pwd)
-FORMULA_NAME := tp-cli
+FORMULA_NAME := toolprint
 FORMULA_FILE := ./Formula/$(FORMULA_NAME).rb
 LOCAL_FORMULA_PATH := $(LOCAL_REPO)/$(FORMULA_FILE)
 FORMULA_VERSION := $(shell grep -m1 'VERSION = "' $(FORMULA_FILE) | sed 's/.*VERSION = "\(.*\)".*/\1/')
-BINARY_NAME := tp-cli
+BINARY_NAME := toolprint
 
 # Tap configuration
 REMOTE_TAP := toolprint/tap
