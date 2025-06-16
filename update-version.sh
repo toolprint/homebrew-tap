@@ -17,7 +17,7 @@ curl -s "$TARBALL_URL" -o "$TARBALL_PATH"
 NEW_SHA=$(shasum -a 256 "$TARBALL_PATH" | cut -d' ' -f1)
 
 # Update all CLI formula files
-for formula_file in "$FORMULA_DIR"/*-cli.rb; do
+for formula_file in "$FORMULA_DIR"/*.rb; do
     echo "Updating $formula_file..."
     sed -i '' "s/VERSION = \"[0-9.]*\"/VERSION = \"$LATEST_VERSION\"/" "$formula_file"
     sed -i '' "s/SHA = \"[a-f0-9]*\"/SHA = \"$NEW_SHA\"/" "$formula_file"
