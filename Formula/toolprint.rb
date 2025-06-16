@@ -1,13 +1,13 @@
 require "language/node"
 
-VERSION = "0.0.37"
-SHA = "fcbc67b9faba799ccbb8e02db4b1338e184d977f033654cc3ec94632e71662a9"
+VERSION = "0.0.38"
+SHA = "6f9c38ed5ffe1493f1c4fdfd250abaf0e4d1fc2cfe039d2c641920c29a9d9181"
 # SHORT_BIN = "tp-cli"
 LONG_BIN = "toolprint"
 
 class Toolprint < Formula
   repo_name = "toolprint/homebrew-tap"
-  formula_name = "tp-cli"
+  formula_name = "toolprint"
   
   desc "Toolprint CLI: Discover, search, and manage tools for your agents."
   homepage "https://www.npmjs.com/package/@onegrep/cli"
@@ -17,7 +17,6 @@ class Toolprint < Formula
   version VERSION
   url "https://registry.npmjs.org/#{package_name}/-/cli-#{version}.tgz"
   sha256 SHA
-  binary_name = "cli"
 
   livecheck do
     url "https://registry.npmjs.org/#{package_name}/latest"
@@ -65,7 +64,7 @@ class Toolprint < Formula
   end
 
   test do
-    system "#{bin}/#{binary_name}", "-V"
-    assert_match version.to_s, shell_output("#{bin}/#{binary_name} -V")
+    system "#{bin}/#{LONG_BIN}", "-V"
+    assert_match version.to_s, shell_output("#{bin}/#{LONG_BIN} -V")
   end
 end
