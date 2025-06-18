@@ -1,7 +1,7 @@
 require "language/node"
 
 VERSION = "0.0.43"
-SHA = "fb2b39b64f1d1cad0a32e798a830914ee40800c017b93e33270381020a1173f2"
+SHA = "1a5d8d66855589502b7bc28ffde58bff255bc031fb63ee255ae240be8f6b8872"
 # SHORT_BIN = "tp-cli"
 LONG_BIN = "toolprint"
 
@@ -10,10 +10,10 @@ class Toolprint < Formula
   formula_name = "toolprint"
   
   desc "Toolprint CLI: Discover, search, and manage tools for your agents."
-  homepage "https://www.npmjs.com/package/@onegrep/cli"
+  homepage "https://www.npmjs.com/package/@toolprint/cli"
   license "EULA"
 
-  package_name = "@onegrep/cli"
+  package_name = "@toolprint/cli"
   version VERSION
   url "https://registry.npmjs.org/#{package_name}/-/cli-#{version}.tgz"
   sha256 SHA
@@ -30,11 +30,8 @@ class Toolprint < Formula
   def install
     system "npm", "install", "--production", "--no-audit", "--no-fund", "--no-package-lock", *Language::Node.std_npm_install_args(libexec), "tsx@^4.19.3"
 
-    # Do some nice symlinking to change things to toolprint
-    bin.install_symlink Dir["#{libexec}/bin/*"]
-    mv "#{bin}/cli", "#{bin}/#{LONG_BIN}"
-    # Create symlink from short name to long name
-    # bin.install_symlink "#{LONG_BIN}" => "#{SHORT_BIN}"
+    # Only symlink the toolprint binary
+    bin.install_symlink "#{libexec}/bin/#{LONG_BIN}"
   end
 
   def pour_bottle_check_unsatisfied
@@ -57,7 +54,7 @@ class Toolprint < Formula
       🚀 Quick start:
         #{LONG_BIN} help
 
-      📚 Learn more at https://www.npmjs.com/package/@onegrep/cli
+      📚 Learn more at https://www.npmjs.com/package/@toolprint/cli
 
 
     EOS
