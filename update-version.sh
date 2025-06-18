@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Configuration
-PACKAGE_NAME="@onegrep/cli"
+PACKAGE_NAME="@toolprint/cli"
 FORMULA_DIR="Formula"
 TEMP_DIR="/tmp"
 

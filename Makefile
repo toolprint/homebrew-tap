@@ -12,9 +12,6 @@ BINARY_NAME := toolprint
 REMOTE_TAP := toolprint/tap
 LOCAL_TAP := toolprint/tap-local
 
-# Include legacy targets
-include legacy.mk
-
 help:
 	@echo "Homebrew Formula Maintenance Commands"
 	@echo "------------------------------------"
@@ -29,19 +26,6 @@ help:
 	@echo "make livecheck  - Install from local tap and run livecheck"
 	@echo "make test       - Test install and verify version"
 	@echo "make clean      - Remove local tap and clear Homebrew caches"
-	@echo ""
-	@echo "Legacy Formula ($(OG_FORMULA_NAME)):"
-	@echo "make legacy_version    - Show legacy formula version"
-	@echo "make legacy_info       - Show legacy formula info"
-	@echo "make legacy_style      - Check legacy formula style"
-	@echo "make legacy_lint       - Run legacy style check"
-	@echo "make legacy_install    - Install legacy formula"
-	@echo "make legacy_test       - Test legacy install"
-	@echo ""
-	@echo "Combined Commands:"
-	@echo "make clean_all  - Clean both current and legacy formulas"
-	@echo "make tap_all    - Tap repository for both formulas"
-	@echo "make lint_all   - Run lint checks on both formulas"
 
 version:
 	@echo "Formula version: $(FORMULA_VERSION)"
@@ -100,11 +84,11 @@ test: clean install
 	fi
 
 # Combined targets
-clean_all: clean legacy_clean
+clean_all: clean
 	@echo "Cleanup completed for both formulas."
 
-tap_all: tap legacy_tap
+tap_all: tap
 	@echo "Tapping completed for both formulas."
 
-lint_all: lint legacy_lint
+lint_all: lint
 	@echo "All lint checks completed for both formulas."
