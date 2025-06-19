@@ -1,7 +1,7 @@
 require "language/node"
 
-VERSION = "0.0.46"
-SHA = "e7fc9ba4afb5c0a45419a25201531bb8f763d61313ca33e7fad247a9e41a46be"
+VERSION = "0.0.47"
+SHA = "f3e9a2b1904134112b1c9e0e49471cf315d6bd0584e3c164c0bd983736604847"
 # SHORT_BIN = "tp-cli"
 LONG_BIN = "toolprint"
 
